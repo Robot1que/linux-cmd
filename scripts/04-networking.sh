@@ -9,3 +9,14 @@
 
 sudo hostnamectl set-hostname <hostname>
 
+# UFW - Uncomplicated Firewall
+
+sudo apt install ufw
+
+sudo ufw allow 22
+sudo ufw allow from 192.168.1.156 to any port 22
+sudo ufw allow from 192.168.1.0/24 to any port 22
+sudo ufw allow from 192.168.1.50
+
+sudo ufw enable
+sudo ufw status
