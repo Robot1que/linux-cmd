@@ -39,3 +39,20 @@ sudo nano /etc/fstab
 # NCurses Disk Usage
 sudo apt install ncdu
 sudo ncdu
+
+# LVM - Linux Logical Volume Manager
+
+sudo apt install lvm2
+
+pvs # show physical volumes
+pvdisplay # show physical volumes with more details
+
+vgs # show volume groups
+vgdisplay # show volume groups with more details
+
+lvs # show logical volumes
+lvdisplay # show logical volumes with more details
+
+# extend logical volume
+sudo lvextend /dev/ubuntu-vg/ubuntu-lv -l +100%FREE
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
