@@ -51,3 +51,13 @@ ssh myserver # all pre-configured parameters are overridable
 
 /etc/ssh/sshd_config # SSH daemon config file - see SSH Security section for more info
 /var/log/auth.log # authentication attemt log file
+
+# SSH - RECOMMENDED SERVER CONFIGURATION
+
+sudo nano /etc/ssh/sshd_config
+
+Port 65332 # random port number
+Protocol 2 # in 18.04 it is used by default and Protocol 1 has been deleted
+AllowGroups remote # create a new group and only allow that group to connect
+PermitRootLogin no
+PasswordAuthentication no # only secure ssh-key authentication

@@ -9,6 +9,12 @@
 
 sudo hostnamectl set-hostname <hostname>
 
+sudo netstat -lntp # list opened ports
+
+# IP ADDRESS
+
+ip addr # show IP address
+
 # UFW - Uncomplicated Firewall
 
 sudo apt install ufw
