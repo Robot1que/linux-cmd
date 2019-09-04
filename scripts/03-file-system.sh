@@ -56,3 +56,10 @@ lvdisplay # show logical volumes with more details
 # extend logical volume
 sudo lvextend /dev/ubuntu-vg/ubuntu-lv -l +100%FREE
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+
+# SWAP FILE
+free -m # to verify whether swap exists
+sudo fallocate -l 16G /swapfile
+sudo mkswap /swapfile
+/swapfile none swap sw 0 0 # add this line to /etc/fstab file
+sudo swapon -a
