@@ -9,11 +9,16 @@
 
 sudo hostnamectl set-hostname <hostname>
 
-sudo netstat -lntp # list opened ports
+sudo netstat -lntp # list opened port
 
 # IP ADDRESS
 
 ip addr # show IP address
+
+# DNS
+
+cat /etc/nsswitch.conf # see the order of resolution
+systemd-resolve --status # see used DNS
 
 # UFW - Uncomplicated Firewall
 
