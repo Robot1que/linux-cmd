@@ -22,3 +22,8 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 # if you encounter any errors simply use
 sudo apt-get -f install
+
+# READING LOGS
+head -n 15 file.txt
+tail -n 15 file.txt
+less file.txt # h - help, /term - search, g - jump to end of a file
