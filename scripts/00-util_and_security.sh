@@ -27,3 +27,8 @@ sudo apt-get -f install
 head -n 15 file.txt
 tail -n 15 file.txt
 less file.txt # h - help, /term - search, g - jump to end of a file
+
+# READING JSON DATA
+sudo apt-get install jq
+docker logs es --tail 3 | jq
+docker logs es --tail 3 | jq '.message'
