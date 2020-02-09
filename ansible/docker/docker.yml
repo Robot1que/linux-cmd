@@ -1,0 +1,58 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  
+  - name: Install prerequisites
+    apt:
+      update_cache: yes
+      name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+
+  - name: Add Dockers official GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Register Docker repository
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_facts.distribution_release }} stable"
+      state: present
+
+  - name: Install Docker
+    apt:
+      update_cache: yes
+      state: present
+      name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+  - name: Configure Docker logging
+    copy:
+      src: daemon.json
+      dest: /etc/docker/daemon.json
+      owner: root
+      group: root
+      mode: '0600'
+
+  - name: Start Docker service on boot
+    service:
+      name: docker
+      enabled: yes
+      state: restarted    
+
+  - name: Add Docker group
+    group:
+      name: docker
+      state: present
+
+  - name: Add user to Docker group
+    user:
+      name: pavels
+      append: yes
+      groups: docker
