@@ -19,7 +19,10 @@ usermod # change user details
 gpasswd # user group modifications
 chage # change user password policy
 
-# ALLOW USER USE SUDO
+# EDIT SUDOERS FILE
+sudo visudo
+
+# ALLOW USER USE SUDO (EDIT SUDOERS MANUALLY)
 echo "newuser ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/newuser
 sudo chown root:root /etc/sudoers.d/newuser
 sudo chmod 440 /etc/sudoers.d/newuser
