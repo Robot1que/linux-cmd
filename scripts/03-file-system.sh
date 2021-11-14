@@ -74,3 +74,4 @@ sudo fdisk /dev/sdb # create a new partition will remaining unallocated space
 sudo pvcreate /dev/sdb2 # create physical volume
 sudo vgextend ubuntu-vg /dev/sdb2 # add new physical volume to the existing volume group
 sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv # extend logical volume (use 100% of additional free space)
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv # resize file system to use new available space in logical volume
