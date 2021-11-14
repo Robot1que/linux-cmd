@@ -65,3 +65,12 @@ sudo mkswap /swapfile
 /swapfile none swap sw 0 0 # add this line to /etc/fstab file
 sudo swapon -a
 sudo swapoff -v /swapfile # deactivates swap file
+
+# ALLOCATE NEW STORAGE SPACE OF EXISTING DISK
+# (AFTER EXTENDING ALREADY MOUNTED DISK)
+
+sudo parted -l # fix GPT PMBR size mismatch
+sudo fdisk /dev/sdb # create a new partition will remaining unallocated space
+sudo pvcreate /dev/sdb2 # create physical volume
+sudo vgextend ubuntu-vg /dev/sdb2 # add new physical volume to the existing volume group
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv # extend logical volume (use 100% of additional free space)
